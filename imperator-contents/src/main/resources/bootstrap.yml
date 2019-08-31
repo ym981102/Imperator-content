@@ -1,0 +1,38 @@
+server:
+  port: 9902
+spring:
+  application:
+    name: Imperator-content
+  cloud:
+    consul:
+      host: 118.25.141.149
+      port: 8500
+      discovery:
+        register: true
+        service-name: ${spring.application.name}
+        health-check-interval: 15s
+        health-check-path: ${management.endpoints.web.base-path}/health
+        tags: urlprefix-/${spring.application.name}
+        instance-id: ${spring.application.name}:${spring.cloud.consul.host}:${server.port}
+    config:
+      label: dev
+      profile: dev
+      url: http://localhost:9090
+      name: config-info
+      backup:
+        enable: true
+        fallbackLocation:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /acutor
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false

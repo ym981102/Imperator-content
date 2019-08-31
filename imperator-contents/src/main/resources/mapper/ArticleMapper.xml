@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 将namespace的值设置为DAO类对应的路径 -->
+<mapper namespace="org.starrier.imperator.content.repository.mapper.ArticleMapper">
+    <!-- 目的：为DAO接口方法提供sql语句配置 -->
+    <resultMap id="article" type="Article">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="author" column="author"/>
+        <result property="category" column="category"/>
+        <result property="summary" column="summary"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <insert id="insertArticle" parameterType="Article" useGeneratedKeys="true" keyProperty="id"><![CDATA[
+        insert into article (title, content, author, category, summary)
+        values (#{title}, #{content}, #{author}, #{category}, #{summary})
+        ]]></insert>
+
+    <delete id="deleteById" parameterType="Article">
+        delete
+        from article
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteArticleByAuthor" parameterType="Article">
+        delete
+        from article
+        where author = #{author}
+    </delete>
+
+    <delete id="deleteArticle" parameterType="Article">
+        delete
+        from article
+        where id = #{id}
+    </delete>
+
+    <update id="updateArticle" parameterType="Article">
+        update article
+        <set>
+            <if test="author != null and author != ''">
+                author =#{author},
+            </if>
+            <if test="category !=null and category != ''">
+                category = #{category},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="summary != null and summary != ''">
+                summary = #{summary},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="update_date != null">
+                update_date =#{update_date}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <select id="listArticle" resultMap="article">
+        select *
+        from article
+    </select>
+
+    <select id="getArticleById" parameterType="long" resultMap="article">
+        select *
+        from article
+        where id = #{id}
+    </select>
+    <select id="getArticlesByAuthor" parameterType="string" resultMap="article">
+        select *
+        from article
+        where author = #{author}
+    </select>
+
+    <select id="findById" resultType="article">
+        select *
+        from article
+        where id = #{articleId}
+    </select>
+    <select id="findAllByKey" resultMap="article">
+        SELECT *
+        FROM article
+        WHERE content LIKE '%{key}%'
+    </select>
+    <select id="getArticlesByCategoryId" resultType="article"></select>
+
+    <select id="getAllAuthorName" resultMap="java.util.List">
+        SELECT author
+        FROM article
+    </select>
+</mapper>
