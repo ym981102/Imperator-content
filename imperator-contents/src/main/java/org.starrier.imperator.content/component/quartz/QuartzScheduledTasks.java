@@ -1,3 +1,4 @@
+/*
 package org.starrier.imperator.content.component.quartz;
 
 import lombok.SneakyThrows;
@@ -10,10 +11,12 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
+*/
 /**
  * @author Starrier
  * @date 2018/11/10.
- */
+ *//*
+
 @Component
 public class QuartzScheduledTasks extends AdaptableJobFactory {
 
@@ -28,4 +31,4 @@ public class QuartzScheduledTasks extends AdaptableJobFactory {
         capableBeanFactory.autowireBean(jobInstance);
         return jobInstance;
     }
-}
+}*/

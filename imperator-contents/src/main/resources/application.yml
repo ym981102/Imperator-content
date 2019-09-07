@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/imperatorContent?false&serverTimezone=UTC&&useSSL=false
+    url: jdbc:mysql://localhost:3306/imperator?false&serverTimezone=UTC&&useSSL=false
     username: root
-    password: 123456
+    password: root
   devtools:
     restart:
       enabled: true
@@ -34,3 +34,11 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+feign:
+  client:
+    config:
+      connectTimeout: 5000
+      readTimeout: 5000
+  okhttp:
+    enabled: true

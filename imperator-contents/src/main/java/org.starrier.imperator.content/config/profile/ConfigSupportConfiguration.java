@@ -18,6 +18,7 @@ import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.FileSystemResource;
+import org.starrier.imperator.content.component.constant.ProfileConstant;
 import org.starrier.imperator.content.component.profile.ConfigSupportProperties;
 
 import javax.annotation.CheckForNull;
@@ -66,7 +67,7 @@ public class ConfigSupportConfiguration implements ApplicationContextInitializer
         MutablePropertySources propertySources = environment.getPropertySources();
         log.info("加载PropertySources源：" + propertySources.size() + "个");
         if (!configSupportProperties.isEnable()) {
-            log.warn("未启用配置备份功能，可使用{}.enable打开", ConfigSupportProperties.CONFIG_PREFIX);
+            log.warn("未启用配置备份功能，可使用{}.enable打开", ProfileConstant.CONFIG_PREFIX);
             return;
         }
         if (isCloudConfigLoaded(propertySources)) {

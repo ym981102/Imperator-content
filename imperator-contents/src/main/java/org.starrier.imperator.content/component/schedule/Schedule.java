@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Schedule {
 
     @Async("imperatorExcutor")
-    @Scheduled(cron = "0/5")
+    @Scheduled(fixedDelay = 5000)
     public void updateSensitiveWords() {
         log.info("update content sensitive words");
     }

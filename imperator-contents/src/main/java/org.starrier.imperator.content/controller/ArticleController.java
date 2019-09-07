@@ -138,11 +138,11 @@ public class ArticleController {
         return Result.success(200);
     }
 
-    @PutMapping
+ /*   @PutMapping
     public Result updateArticleById(@RequestBody Article article) {
         articleService.updateArticleById(article.getId());
         return Result.builder().code(ResultCode.SUCCESS.code()).build();
-    }
+    }*/
 
     /**
      * <p>Fetch Article via article's id</p>
