@@ -32,21 +32,21 @@ public class PassCaseMetric {
 
     private final AtomicInteger atomicInteger = new AtomicInteger(0);
 
-    private Gauge passCaseGuage = Gauge.builder("pass.cases.guage", atomicInteger, AtomicInteger::get)
+    private Gauge passCaseGauge = Gauge.builder("pass.cases.gauge", atomicInteger, AtomicInteger::get)
             .tag("service", "demo")
-            .description("pass cases guage of demo")
+            .description("pass cases gauge of demo")
             .register(new SimpleMeterRegistry());
-    private AtomicInteger passCases = Metrics.gauge("pass.cases.guage.value", init(), atomicInteger);
+    private AtomicInteger passCases = Metrics.gauge("pass.cases.gauge.value", init(), atomicInteger);
 
     public void handleMetrics() {
         if (0 == (System.currentTimeMillis() % 2)) {
             passCases.addAndGet(100);
-            log.info("ADD + " + passCaseGuage.measure() + " : " + passCases);
+            log.info("ADD + " + passCaseGauge.measure() + " : " + passCases);
         } else {
             if (passCases.addAndGet(-100) < 0) {
                 passCases.set(1);
             }
-            log.info("DECR - " + passCaseGuage.measure() + " : " + passCases);
+            log.info("DECR - " + passCaseGauge.measure() + " : " + passCases);
         }
     }
 

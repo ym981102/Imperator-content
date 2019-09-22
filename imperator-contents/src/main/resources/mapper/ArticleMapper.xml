@@ -4,7 +4,7 @@
 <!-- 将namespace的值设置为DAO类对应的路径 -->
 <mapper namespace="org.starrier.imperator.content.repository.mapper.ArticleMapper">
     <!-- 目的：为DAO接口方法提供sql语句配置 -->
-    <resultMap id="article" type="Article">
+    <resultMap id="article" type="org.starrier.imperator.content.entity.Article.">
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>

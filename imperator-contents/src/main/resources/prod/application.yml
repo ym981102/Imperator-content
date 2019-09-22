@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/imperator?false&serverTimezone=UTC&&useSSL=false
+    username: root
+    password: root
+  devtools:
+    restart:
+      enabled: true
+  mail:
+    host: smtp.qq.com
+    username: 1342878298@qq.com
+    password: tgjzueoejdxbhgci
+    default-encoding: UTF-8
+    properties:
+      mail:
+        stmp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.starrier.imperator.content.entity
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+feign:
+  client:
+    config:
+      connectTimeout: 5000
+      readTimeout: 5000
