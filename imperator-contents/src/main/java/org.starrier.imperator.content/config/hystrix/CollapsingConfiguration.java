@@ -23,9 +23,12 @@ public class CollapsingConfiguration {
 
     @Configuration
     @ConditionalOnClass(Controller.class)
-    public class WebMvcConfig implements WebMvcConfigurer {
-        @Autowired
-        HystrixContextInterceptor userContextInterceptor;
+    public static class WebMvcConfig implements WebMvcConfigurer {
+        private final HystrixContextInterceptor userContextInterceptor;
+
+        public WebMvcConfig(HystrixContextInterceptor userContextInterceptor) {
+            this.userContextInterceptor = userContextInterceptor;
+        }
 
         @Override
         public void addInterceptors(InterceptorRegistry registry) {

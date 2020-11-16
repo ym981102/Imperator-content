@@ -14,7 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 @EnableScheduling
 @EnableDiscoveryClient
-
 @SpringBootApplication
 public class ImperatorContent {
     public static void main(String[] args) {

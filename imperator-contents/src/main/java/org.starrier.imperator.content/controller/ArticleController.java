@@ -5,18 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.starrier.common.result.Result;
 import org.starrier.common.result.ResultCode;
 import org.starrier.imperator.content.entity.Article;
@@ -39,8 +32,11 @@ public class ArticleController {
 
     private final ArticleService articleService;
 
-    public ArticleController(ArticleService articleService) {
+    private final RedisTemplate redisTemplate;
+
+    public ArticleController(ArticleService articleService, RedisTemplate redisTemplate) {
         this.articleService = articleService;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
@@ -81,7 +77,6 @@ public class ArticleController {
      * ,and return error code depends on  exception.
      */
     @DeleteMapping(value = "/{id}")
-    @CacheEvict(value = "articleId")
     @ResponseBody
     public Result deleteArticleById(final @PathVariable("id") Long articleId) {
         Optional<Article> articleOptional = articleService.findById(articleId);
@@ -136,11 +131,11 @@ public class ArticleController {
         return Result.success(200);
     }
 
- /*   @PutMapping
+    @PutMapping("/article/id")
     public Result updateArticleById(@RequestBody Article article) {
         articleService.updateArticleById(article.getId());
         return Result.builder().code(ResultCode.SUCCESS.code()).build();
-    }*/
+    }
 
     /**
      * <p>Fetch Article via article's id</p>
@@ -234,7 +229,8 @@ public class ArticleController {
     }
 
     @GetMapping("/test")
-    public String test(){
-        return "success";
+    public String test() {
+
+       return articleService.test();
     }
 }

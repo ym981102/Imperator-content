@@ -15,7 +15,7 @@
         <maven.snapshots.url>http://maven.starrier.org/repository/maven-snapshots/</maven.snapshots.url>
     </properties>
     <groupId>org.starrier</groupId>
-    <artifactId>imperator-content-dto</artifactId>
+    <artifactId>imperator-content-entity</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>

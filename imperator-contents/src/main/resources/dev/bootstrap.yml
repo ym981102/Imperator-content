@@ -14,6 +14,8 @@ spring:
         health-check-path: ${management.endpoints.web.base-path}/health
         tags: urlprefix-/${spring.application.name}
         instance-id: ${spring.application.name}:${spring.cloud.consul.host}:${server.port}
+        heartbeat:
+          enabled: true
 management:
   endpoints:
     web:

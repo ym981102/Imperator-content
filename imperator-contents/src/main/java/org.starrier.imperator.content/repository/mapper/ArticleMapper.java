@@ -2,6 +2,8 @@ package org.starrier.imperator.content.repository.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.starrier.imperator.content.entity.Article;
 import org.starrier.imperator.content.repository.dao.ArticleDao;
 
@@ -13,6 +15,7 @@ import java.util.Optional;
  * @date 2019/1/9.
  */
 @Mapper
+@Repository
 public interface ArticleMapper extends ArticleDao {
     /**
      * Insert Article with Id.

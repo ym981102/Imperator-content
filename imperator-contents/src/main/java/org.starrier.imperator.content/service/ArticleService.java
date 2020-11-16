@@ -116,4 +116,6 @@ public interface ArticleService {
     List<Article> findAllByIds(List<Integer> articleIds);
 
     void updateArticleById(Long id);
+
+    String test();
 }

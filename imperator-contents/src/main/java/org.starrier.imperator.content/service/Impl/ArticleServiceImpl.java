@@ -5,7 +5,8 @@ import com.google.common.collect.Lists;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
@@ -36,16 +37,17 @@ import java.util.stream.Collectors;
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleDao articleDao;
+    private final RedisTemplate redisTemplate;
 
-    @Autowired
-    public ArticleServiceImpl(ArticleDao articleDao) {
+    public ArticleServiceImpl(ArticleDao articleDao, RedisTemplate redisTemplate) {
         this.articleDao = articleDao;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
      * <p>Insert Article with Id</p>
      *
-     * @param article
+     * @param article 数据实体
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -77,9 +79,8 @@ public class ArticleServiceImpl implements ArticleService {
     /**
      * 取消点赞
      *
-     * @param articleId
-     * @param likeId
-     * @return
+     * @param articleId 文章 id
+     * @param likeId 点赞 用户 id
      */
     @Override
     public void removeVote(int articleId, int likeId) {
@@ -95,7 +96,7 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.getArticlesByKeyword(keyword);
     }
 
-    @Retryable(value = NotFoundException.class, maxAttempts = 3, backoff = @Backoff(delay = 2000L, multiplier = 1.5))
+    @Retryable(value = NotFoundException.class, backoff = @Backoff(delay = 2000L, multiplier = 1.5))
     @Override
     public Article getArticleById(Long id) {
         return articleDao.getArticleById(id);
@@ -158,6 +159,17 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void updateArticleById(Long id) {
         articleDao.updateArticleById(id);
+    }
+
+    @Override
+    public String test() {
+        ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
+        String test = valueOperations.get("test");
+        if (test == null) {
+            valueOperations.set("test","test");
+            return "failed";
+        }
+        return "success";
     }
 
     /**

@@ -185,9 +185,7 @@ public class ConfigSupportConfiguration implements ApplicationContextInitializer
                 log.error("无法读写文件：{}", fileSystemResource.getPath());
             }
             Properties properties = new Properties();
-            Iterator<String> keyIterator = backupPropertyMap.keySet().iterator();
-            while (keyIterator.hasNext()) {
-                String key = keyIterator.next();
+            for (String key : backupPropertyMap.keySet()) {
                 properties.setProperty(key, String.valueOf(backupPropertyMap.get(key)));
             }
 
