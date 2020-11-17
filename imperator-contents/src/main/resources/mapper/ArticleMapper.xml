@@ -94,4 +94,7 @@
         SELECT author
         FROM article
     </select>
+    <select id="getArticlesByKeyword" resultType="org.starrier.imperator.content.entity.Article">
+
+    </select>
 </mapper>

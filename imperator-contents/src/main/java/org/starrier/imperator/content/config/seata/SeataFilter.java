@@ -20,7 +20,8 @@ public class SeataFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException, IOException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         String xid = req.getHeader(RootContext.KEY_XID.toLowerCase());
         boolean isBind = false;

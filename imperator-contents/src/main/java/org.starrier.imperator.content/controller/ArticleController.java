@@ -211,8 +211,7 @@ public class ArticleController {
      */
     @GetMapping(value = "/search/{keyword}", consumes = "application/json", produces = "application/json")
     public Result search(final @PathVariable(value = "keyword") String keyword) {
-        List<Article> articles = articleService.getArticlesByKeyword(keyword);
-        return Result.success(articles);
+        return Result.success(articleService.getArticlesByKeyword(keyword));
     }
 
     /**

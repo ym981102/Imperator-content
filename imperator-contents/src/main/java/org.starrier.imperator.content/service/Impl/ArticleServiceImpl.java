@@ -2,6 +2,7 @@ package org.starrier.imperator.content.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
@@ -90,6 +91,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    @GlobalTransactional(rollbackFor = Exception.class)
     public List<Article> getArticlesByKeyword(String keyword) {
         return articleDao.getArticlesByKeyword(keyword);
     }
