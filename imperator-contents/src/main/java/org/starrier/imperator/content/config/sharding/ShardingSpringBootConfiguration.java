@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.starrier.imperator.content.config.seata;
+package org.starrier.imperator.content.config.sharding;
 
 import com.google.common.base.Preconditions;
 import io.seata.rm.datasource.DataSourceProxy;

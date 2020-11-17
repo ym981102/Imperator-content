@@ -1,4 +1,4 @@
-package org.starrier.imperator.content.config.seata;
+package org.starrier.imperator.content.config.sharding;
 
 import javax.naming.NamingException;
 
