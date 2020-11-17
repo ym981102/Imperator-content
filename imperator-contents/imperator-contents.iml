@@ -58,9 +58,7 @@
     <orderEntry type="library" name="Maven: org.glassfish:jakarta.el:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.39" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.3.5.RELEASE" level="project" />
@@ -98,7 +96,8 @@
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-ui:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spring-web:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.11" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:2.4.0" level="project" />
+    <orderEntry type="library" name="Maven: redis.clients:jedis:2.9.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:2.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:2.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:2.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:5.2.10.RELEASE" level="project" />
@@ -111,6 +110,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.53.Final" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.3.11.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger2:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-annotations:1.5.13" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-models:1.5.13" level="project" />
@@ -132,7 +132,6 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-consul-discovery:2.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.8" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-core:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-hystrix:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.2.2.RELEASE" level="project" />
@@ -165,7 +164,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.module:jackson-module-afterburner:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-metrics-event-stream:1.5.18" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-javanica:1.5.18" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm:5.0.4" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex:rxjava-reactive-streams:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-hystrix-dashboard:1.4.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard:2.2.2.RELEASE" level="project" />
@@ -218,8 +216,6 @@
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:parquet-hadoop-bundle:1.6.0" level="project" />
-    <orderEntry type="library" name="Maven: redis.clients:jedis:3.3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:2.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.9.RELEASE" level="project" />
@@ -276,5 +272,55 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-jdbc-spring-boot-starter:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-spring-boot-util:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-core-common:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-common:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:indy:2.4.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-transaction-spring:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-jdbc-core:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-pluggable:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-binder:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-route:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-rewrite-engine:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-executor:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-merge:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-transaction-core:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-sql92:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-engine:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-spi:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-spi:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-statement:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-mysql:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-postgresql:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-oracle:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-sqlserver:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-core-route:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:master-slave-core-route:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-core-api:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:encrypt-core-api:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-core-rewrite:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:encrypt-core-rewrite:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shadow-core-rewrite:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-core-execute:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-core-merge:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:encrypt-core-merge:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:encrypt-core-common:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:sharding-transaction-base-seata-at:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-all:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.53.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.typesafe:config:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
+    <orderEntry type="library" name="Maven: cglib:cglib:3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:4.2" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.6" level="project" />
   </component>
 </module>

@@ -37,11 +37,9 @@ import java.util.stream.Collectors;
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleDao articleDao;
-    private final RedisTemplate redisTemplate;
 
-    public ArticleServiceImpl(ArticleDao articleDao, RedisTemplate redisTemplate) {
+    public ArticleServiceImpl(ArticleDao articleDao) {
         this.articleDao = articleDao;
-        this.redisTemplate = redisTemplate;
     }
 
     /**
@@ -163,13 +161,14 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public String test() {
-        ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
+       /* ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
         String test = valueOperations.get("test");
         if (test == null) {
             valueOperations.set("test","test");
             return "failed";
         }
-        return "success";
+        return "success";*/
+        return null;
     }
 
     /**

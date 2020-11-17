@@ -8,3 +8,16 @@ CREATE TABLE article (
     version VARCHAR (225) DEFAULT NULL COMMENT '版本',
     PRIMARY KEY(id)
 )engine=innodb default charset = utf8mb4;
+
+
+create table if not exists article02
+(
+    id int auto_increment
+        primary key,
+    tittle varchar(1024) null,
+    content varchar(1024) null,
+    author varchar(1024) null,
+    category varchar(1024) null,
+    summary varchar(1024) null,
+    version int null
+) comment '文章';
