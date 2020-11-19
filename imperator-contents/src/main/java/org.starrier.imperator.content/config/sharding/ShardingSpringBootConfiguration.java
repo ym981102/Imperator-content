@@ -20,8 +20,6 @@ package org.starrier.imperator.content.config.sharding;
 import com.google.common.base.Preconditions;
 import io.seata.rm.datasource.DataSourceProxy;
 import lombok.RequiredArgsConstructor;
-
-
 import lombok.SneakyThrows;
 import org.apache.shardingsphere.core.yaml.swapper.MasterSlaveRuleConfigurationYamlSwapper;
 import org.apache.shardingsphere.core.yaml.swapper.ShardingRuleConfigurationYamlSwapper;
@@ -73,19 +71,19 @@ import java.util.Map;
 @ConditionalOnProperty(prefix = "spring.shardingsphere", name = "enabled", havingValue = "true", matchIfMissing = true)
 @RequiredArgsConstructor
 public class ShardingSpringBootConfiguration implements EnvironmentAware {
-    
+
     private final SpringBootShardingRuleConfigurationProperties shardingProperties;
-    
+
     private final SpringBootMasterSlaveRuleConfigurationProperties masterSlaveProperties;
-    
+
     private final SpringBootEncryptRuleConfigurationProperties encryptProperties;
-    
+
     private final SpringBootPropertiesConfigurationProperties propMapProperties;
-    
+
     private final Map<String, DataSource> dataSourceMap = new LinkedHashMap<>();
-    
+
     private final String jndiName = "jndi-name";
-    
+
     /**
      * Get encrypt data source bean.
      *
@@ -97,7 +95,7 @@ public class ShardingSpringBootConfiguration implements EnvironmentAware {
         return EncryptDataSourceFactory.createDataSource(dataSourceMap.values().iterator().next(),
                 new EncryptRuleConfigurationYamlSwapper().swap(encryptProperties), propMapProperties.getProps());
     }
-    
+
     /**
      * Get master-slave data source bean.
      *
@@ -110,7 +108,7 @@ public class ShardingSpringBootConfiguration implements EnvironmentAware {
         return MasterSlaveDataSourceFactory.createDataSource(dataSourceMap,
                 new MasterSlaveRuleConfigurationYamlSwapper().swap(masterSlaveProperties), propMapProperties.getProps());
     }
-    
+
     /**
      * Get sharding data source bean.
      *
@@ -123,7 +121,7 @@ public class ShardingSpringBootConfiguration implements EnvironmentAware {
         return ShardingDataSourceFactory.createDataSource(dataSourceMap,
                 new ShardingRuleConfigurationYamlSwapper().swap(shardingProperties), propMapProperties.getProps());
     }
-    
+
     @SneakyThrows
     @Override
     public final void setEnvironment(final Environment environment) {
@@ -138,14 +136,14 @@ public class ShardingSpringBootConfiguration implements EnvironmentAware {
             }
         }
     }
-    
+
     private List<String> getDataSourceNames(final Environment environment, final String prefix) {
         StandardEnvironment standardEnv = (StandardEnvironment) environment;
         standardEnv.setIgnoreUnresolvableNestedPlaceholders(true);
-        return null == standardEnv.getProperty(prefix + "name") 
+        return null == standardEnv.getProperty(prefix + "name")
                 ? new InlineExpressionParser(standardEnv.getProperty(prefix + "names")).splitAndEvaluate() : Collections.singletonList(standardEnv.getProperty(prefix + "name"));
     }
-    
+
     @SuppressWarnings("unchecked")
     private DataSource getDataSource(final Environment environment, final String prefix, final String dataSourceName) throws ReflectiveOperationException, NamingException {
         Map<String, Object> dataSourceProps = PropertyUtil.handle(environment, prefix + dataSourceName.trim(), Map.class);
@@ -160,7 +158,7 @@ public class ShardingSpringBootConfiguration implements EnvironmentAware {
          */
         return new DataSourceProxy(DataSourceUtil.getDataSource(dataSourceProps.get("type").toString(), dataSourceProps));
     }
-    
+
     private DataSource getJndiDataSource(final String jndiName) throws NamingException {
         JndiObjectFactoryBean bean = new JndiObjectFactoryBean();
         bean.setResourceRef(true);

@@ -93,7 +93,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
      * Instantiates a new Global transaction scanner.
      *
      * @param txServiceGroup the tx service group
-     * @param mode the mode
+     * @param mode           the mode
      */
     public GlobalTransactionScanner(String txServiceGroup, int mode) {
         this(txServiceGroup, txServiceGroup, mode);
@@ -102,7 +102,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
     /**
      * Instantiates a new Global transaction scanner.
      *
-     * @param applicationId the application id
+     * @param applicationId  the application id
      * @param txServiceGroup the default server group
      */
     public GlobalTransactionScanner(String applicationId, String txServiceGroup) {
@@ -112,9 +112,9 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
     /**
      * Instantiates a new Global transaction scanner.
      *
-     * @param applicationId the application id
+     * @param applicationId  the application id
      * @param txServiceGroup the tx service group
-     * @param mode the mode
+     * @param mode           the mode
      */
     public GlobalTransactionScanner(String applicationId, String txServiceGroup, int mode) {
         this(applicationId, txServiceGroup, mode, DEFAULT_FAIL_HANDLER);
@@ -123,8 +123,8 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
     /**
      * Instantiates a new Global transaction scanner.
      *
-     * @param applicationId the application id
-     * @param txServiceGroup the tx service group
+     * @param applicationId      the application id
+     * @param txServiceGroup     the tx service group
      * @param failureHandlerHook the failure handler hook
      */
     public GlobalTransactionScanner(String applicationId, String txServiceGroup, FailureHandler failureHandlerHook) {
@@ -134,9 +134,9 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
     /**
      * Instantiates a new Global transaction scanner.
      *
-     * @param applicationId the application id
-     * @param txServiceGroup the tx service group
-     * @param mode the mode
+     * @param applicationId      the application id
+     * @param txServiceGroup     the tx service group
+     * @param mode               the mode
      * @param failureHandlerHook the failure handler hook
      */
     public GlobalTransactionScanner(String applicationId, String txServiceGroup, int mode,
@@ -210,7 +210,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
                     Class<?> serviceInterface = SpringProxyUtils.findTargetClass(bean);
                     Class<?>[] interfacesIfJdk = SpringProxyUtils.findInterfaces(bean);
 
-                    if (!existsAnnotation(new Class[] {serviceInterface})
+                    if (!existsAnnotation(new Class[]{serviceInterface})
                             && !existsAnnotation(interfacesIfJdk)) {
                         return bean;
                     }
@@ -270,7 +270,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
     @Override
     protected Object[] getAdvicesAndAdvisorsForBean(Class beanClass, String beanName, TargetSource customTargetSource)
             throws BeansException {
-        return new Object[] {interceptor};
+        return new Object[]{interceptor};
     }
 
     @Override

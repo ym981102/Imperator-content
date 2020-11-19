@@ -2,7 +2,6 @@ package org.starrier.imperator.content.repository.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 import org.starrier.imperator.content.entity.Article;
 
 import java.util.List;

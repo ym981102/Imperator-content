@@ -1,6 +1,7 @@
 package org.starrier.imperator.content.service;
 
 import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.ArticleVote;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,10 +53,10 @@ public interface ArticleService {
     /**
      * 点赞
      *
-     * @param articleId
+     * @param articleVote
      * @return
      */
-    Article createVote(Long articleId);
+    Article createVote(ArticleVote articleVote);
 
     /**
      * 取消点赞

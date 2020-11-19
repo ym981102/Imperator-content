@@ -6,18 +6,16 @@ import io.seata.spring.annotation.GlobalTransactional;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.starrier.common.result.Result;
 import org.starrier.common.result.ResultCode;
 import org.starrier.imperator.content.entity.Article;
+import org.starrier.imperator.content.entity.ArticleVote;
 import org.starrier.imperator.content.repository.dao.ArticleDao;
 import org.starrier.imperator.content.service.ArticleService;
 
@@ -50,7 +48,7 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void insertArticle(@RequestBody Article article) {
+    public void insertArticle(Article article) {
 
         log.info(" ThreadContextService, Current thread:[{}]", Thread.currentThread().getId());
         articleDao.insertArticle(article);
@@ -65,12 +63,14 @@ public class ArticleServiceImpl implements ArticleService {
     /**
      * 点赞
      *
-     * @param articleId {@link Article#getId()}
+     * @param articleVote {@link Article#getId()}
      * @return Article
      */
     @Override
-    public Article createVote(Long articleId) {
-        Article optionalArticle = articleDao.getArticleById(articleId);
+    @Transactional(rollbackFor = Exception.class)
+    public Article createVote(ArticleVote articleVote) {
+
+        Article optionalArticle = articleDao.getArticleById(articleVote.getArticleId());
         Article originalBlog = null;
         return null;
     }
@@ -79,7 +79,7 @@ public class ArticleServiceImpl implements ArticleService {
      * 取消点赞
      *
      * @param articleId 文章 id
-     * @param likeId 点赞 用户 id
+     * @param likeId    点赞 用户 id
      */
     @Override
     public void removeVote(int articleId, int likeId) {
