@@ -192,7 +192,6 @@ public class ConfigSupportConfiguration implements ApplicationContextInitializer
             properties.store(fos, "Backup Cloud Config");
         } catch (IOException e) {
             log.error("文件操作失败：{}", fileSystemResource.getPath());
-            e.printStackTrace();
         }
     }
 
@@ -211,7 +210,7 @@ public class ConfigSupportConfiguration implements ApplicationContextInitializer
             propertiesFactory.afterPropertiesSet();
             props = propertiesFactory.getObject();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("load local file error:[{}]", e.getMessage(), e);
             return null;
         }
         return props;

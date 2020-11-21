@@ -76,7 +76,7 @@ public class ElasticSearchController {
      * @return
      */
     @PostMapping("/index")
-    public Result createIndex(HttpServletRequest request,@RequestParam("index") String index) {
+    public Result createIndex(HttpServletRequest request, @RequestParam("index") String index) {
         if (StringUtils.isEmpty(index)) {
             return Result.error("索引不存在...");
         }
@@ -91,7 +91,6 @@ public class ElasticSearchController {
             log.debug("创建index索引成功: {}", createIndexResponse.index());
             return Result.success(createIndexResponse.index());
         } catch (IOException e) {
-            e.printStackTrace();
             log.debug("创建index索引异常...");
         }
         return Result.error("创建index索引失败...");
@@ -111,7 +110,6 @@ public class ElasticSearchController {
             log.debug("获取是否存在索引成功: {}", exists);
             return Result.success(exists);
         } catch (IOException e) {
-            e.printStackTrace();
             log.debug("创建index索引异常...");
         }
         log.debug("获取是否存在索引失败...");
@@ -136,7 +134,6 @@ public class ElasticSearchController {
             log.debug("删除索引成功: {}", delete);
             return Result.success(delete);
         } catch (IOException e) {
-            e.printStackTrace();
             log.debug("删除索引异常...");
         }
         log.debug("删除索引失败");
@@ -170,7 +167,7 @@ public class ElasticSearchController {
             log.debug("往索引中添加类型成功: {}", indexResponse);
             return Result.success(indexResponse);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("error:[{}]", e.getMessage(), e);
         }
         log.debug("往索引中添加类型失败");
         return Result.error("往索引中添加类型失败");
@@ -188,7 +185,7 @@ public class ElasticSearchController {
         try {
             restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
 
     }
@@ -212,7 +209,7 @@ public class ElasticSearchController {
         try {
             restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -242,7 +239,7 @@ public class ElasticSearchController {
             log.debug("往索引中更新类型成功: {}", updateResponse);
             return Result.success(updateResponse);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
         log.debug("往索引中更新类型失败");
         return Result.error("往索引中更新类型失败");
@@ -270,7 +267,7 @@ public class ElasticSearchController {
             log.debug("删除索引中的类型成功: {}", delete);
             return Result.success(delete);
         } catch (IOException e) {
-            e.printStackTrace();
+
             log.debug("删除索引中的类型异常...");
         }
         log.debug("删除索引中的类型失败");
@@ -304,7 +301,7 @@ public class ElasticSearchController {
             }
             return Result.success("数据不存在");
         } catch (IOException e) {
-            e.printStackTrace();
+
             log.debug("根据id查询异常...");
         }
         log.debug("根据id查询失败");
@@ -396,7 +393,7 @@ public class ElasticSearchController {
             // 返回
             return Result.success(list);
         } catch (IOException e) {
-            e.printStackTrace();
+
             log.debug("查询异常");
         }
         log.debug("查询失败");
