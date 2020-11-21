@@ -172,12 +172,16 @@ public class ArticleServiceImpl implements ArticleService {
     public String test() {
 
         ValueOperations<String, Integer> valueOperations = redisTemplate.opsForValue();
-        Integer test = valueOperations.get("test");
-        if (test == null) {
+        Integer token = valueOperations.get("test");
+        if (token == null) {
             valueOperations.set("test", 1);
             return "failed";
         }
+
+        valueOperations.increment("test");
+
         return "success";
+
     }
 
     /**

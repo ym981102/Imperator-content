@@ -10,6 +10,7 @@ import com.alibaba.otter.canal.protocol.CanalEntry.EventType;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
 import com.alibaba.otter.canal.protocol.Message;
+import org.junit.Test;
 
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -20,9 +21,12 @@ import java.util.List;
  * @author starrier
  * @date 2020/11/19
  */
+
 public class CanalTest {
 
-    public static void main(String args[]) {
+
+    @Test
+    public void testCanalConnect() {
         // 创建链接
         CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1",
                 11111), "example", "canal", "canal");
