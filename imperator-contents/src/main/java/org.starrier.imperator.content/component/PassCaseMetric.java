@@ -21,7 +21,7 @@ import static org.starrier.imperator.content.component.constant.ProfileConstant.
  * @date 2019/05/13
  */
 @Slf4j
-@Component(value = "passCaseMetric")
+@Component
 public class PassCaseMetric {
 
     private List<Tag> init() {

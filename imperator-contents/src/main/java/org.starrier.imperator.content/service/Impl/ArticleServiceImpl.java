@@ -6,6 +6,8 @@ import io.seata.spring.annotation.GlobalTransactional;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
@@ -32,13 +34,18 @@ import java.util.stream.Collectors;
  * @date 2018/10/27.
  */
 @Slf4j
-@Service("articleService")
+@Service
 public class ArticleServiceImpl implements ArticleService {
 
-    private final ArticleDao articleDao;
 
-    public ArticleServiceImpl(ArticleDao articleDao) {
+    private final ArticleDao articleDao;
+    @SuppressWarnings("rawtypes")
+    private final RedisTemplate redisTemplate;
+
+    @SuppressWarnings("rawtypes")
+    public ArticleServiceImpl(ArticleDao articleDao, RedisTemplate redisTemplate) {
         this.articleDao = articleDao;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
@@ -163,14 +170,14 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public String test() {
-       /* ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
-        String test = valueOperations.get("test");
+
+        ValueOperations<String,Integer> valueOperations = redisTemplate.opsForValue();
+        Integer test = valueOperations.get("test");
         if (test == null) {
-            valueOperations.set("test","test");
+            valueOperations.set("test",1);
             return "failed";
         }
-        return "success";*/
-        return null;
+        return "success";
     }
 
     /**

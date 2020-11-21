@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author Starrier
  * @date 2019/05/13
  */
-@Service("controllerService")
+@Service
 public class ControllerService {
 
     private static final Counter USER_COUNTER = Metrics.counter("user.counter.total", "services", "demo");

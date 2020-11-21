@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{50}.%M.%L) - %highlight(%msg) %n</pattern>
+        </layout>
+    </appender>
+    <!--logback输出-->
+    <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>10.38.88.116:5044</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- 打印行号、方法名，官方不建议在生产环境开启此配置，默认为false(关闭)，具网友测试开启后的耗时是未开启的大约360倍的时间（业务量小的时候可以忽略） -->
+            <includeCallerData>true</includeCallerData>
+            <!-- 设置时区-->
+            <timeZone>UTC</timeZone>
+            <!-- 日期格式化-->
+            <!-- <timestampPattern>yyyy-MM-dd'T'HH:mm:ss.SSS</timestampPattern>-->
+            <!-- 添加自定义属性，这里的server_name是服务名-->
+            <customFields>{"server_name":"imperator-content"}</customFields>
+        </encoder>
+        <!-- 设置超时时间， 默认没有，使用集群的时候可以加上-->
+        <!--<writeTimeout>30 seconds</writeTimeout>-->
+    </appender>
+
+    <root level="INFO">
+        <!--本地开发调试将控制台输出打开，同时将日志文件输出关闭，提高日志性能；线上部署请务必将控制台输出关闭-->
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STASH"/>
+    </root>
+</configuration>

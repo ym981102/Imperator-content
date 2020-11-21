@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.Controller;
+import org.starrier.imperator.content.annotation.RequestLimitIntercept;
 
 /**
  * @author Starrier
@@ -18,21 +19,6 @@ public class CollapsingConfiguration {
     @ConditionalOnClass(Controller.class)
     public HystrixContextInterceptor userContextInterceptor() {
         return new HystrixContextInterceptor();
-    }
-
-    @Configuration
-    @ConditionalOnClass(Controller.class)
-    public static class WebMvcConfig implements WebMvcConfigurer {
-        private final HystrixContextInterceptor userContextInterceptor;
-
-        public WebMvcConfig(HystrixContextInterceptor userContextInterceptor) {
-            this.userContextInterceptor = userContextInterceptor;
-        }
-
-        @Override
-        public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(userContextInterceptor);
-        }
     }
 }
 

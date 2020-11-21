@@ -1,12 +1,14 @@
 package org.starrier.imperator.content.config.thread;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import javax.validation.Valid;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -17,6 +19,28 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 @EnableAsync
 public class ThreadPoolConfig {
+
+    @Value("${thread.pool.queue.capacity.size:200}")
+    private Integer threadPoolQueueCapacitySize;
+
+    @Value("${thread.pool.thread.keep.alive.seconds:60}")
+    private Integer threadPoolThreadKeepAliveSeconds;
+
+    /**
+     * 根据 cpu 的数量动态的配置核心线程数和最大线程数
+     */
+    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
+
+    /**
+     * 核心线程数 = CPU核心数 + 1
+     */
+    private static final int CORE_POOL_SIZE = CPU_COUNT + 1;
+    /**
+     * 线程池最大线程数 = CPU核心数 * 2 + 1
+     */
+    private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+
+
 
     /**
      * 1. Set the number of core threads
@@ -29,13 +53,20 @@ public class ThreadPoolConfig {
      */
     @Bean
     public TaskExecutor imperatorExcutor() {
+
+
         log.info(" ThreadPool is using ....");
         log.info(" Asynchronous task is about to execute ");
+
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        taskExecutor.setCorePoolSize(5);
-        taskExecutor.setMaxPoolSize(10);
-        taskExecutor.setQueueCapacity(20);
-        taskExecutor.setKeepAliveSeconds(60);
+
+        taskExecutor.setCorePoolSize(CORE_POOL_SIZE);
+
+        taskExecutor.setMaxPoolSize(MAXIMUM_POOL_SIZE);
+
+        taskExecutor.setQueueCapacity(threadPoolQueueCapacitySize);
+
+        taskExecutor.setKeepAliveSeconds(threadPoolThreadKeepAliveSeconds);
         taskExecutor.setThreadNamePrefix("Service-Article-");
         taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         /*
@@ -49,6 +80,7 @@ public class ThreadPoolConfig {
         taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
         taskExecutor.setAwaitTerminationSeconds(60);
         taskExecutor.initialize();
+
         return taskExecutor;
     }
 }
