@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+import static org.starrier.imperator.content.redis.mq.Consts.TopicName;
+
 @Slf4j
 @Component
 public class Subscribe {
@@ -18,7 +20,7 @@ public class Subscribe {
 
     @PostConstruct
     public void subscribe(){
-        RTopic rTopic = redissonClient.getTopic(top.lrshuai.redisson.subscribe.Consts.TopicName);
+        RTopic rTopic = redissonClient.getTopic(TopicName);
         rTopic.addListener(MyObjectDTO.class, new MessageListener<MyObjectDTO>() {
             // 接受订阅的消息
             @Override

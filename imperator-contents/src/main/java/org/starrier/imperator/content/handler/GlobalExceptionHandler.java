@@ -1,8 +1,7 @@
-package org.starrier.imperator.content.annotation;
+package org.starrier.imperator.content.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.starrier.common.result.Result;

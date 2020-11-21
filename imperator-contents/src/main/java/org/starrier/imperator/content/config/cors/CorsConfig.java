@@ -1,4 +1,4 @@
-package org.starrier.imperator.content.config;
+package org.starrier.imperator.content.config.cors;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

@@ -1,11 +1,9 @@
 package org.starrier.imperator.content;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.mvc.Controller;
 import org.starrier.imperator.content.annotation.RequestLimitIntercept;
 import org.starrier.imperator.content.config.hystrix.HystrixContextInterceptor;
 

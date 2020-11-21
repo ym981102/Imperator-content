@@ -1,4 +1,4 @@
-package org.starrier.imperator.content;
+package org.starrier.imperator.content.config.es;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
