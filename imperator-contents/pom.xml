@@ -297,6 +297,21 @@
             <artifactId>transmittable-thread-local</artifactId>
         </dependency>
 
+        <!-- ELSearch依赖-->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>7.4.0</version>
+        </dependency>
+
+        <!-- Java High Level REST Client -->
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>7.4.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <dependencyManagement>

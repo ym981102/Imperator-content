@@ -26,6 +26,6 @@
     <root level="INFO">
         <!--本地开发调试将控制台输出打开，同时将日志文件输出关闭，提高日志性能；线上部署请务必将控制台输出关闭-->
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="STASH"/>
+        <!--<appender-ref ref="STASH"/>-->
     </root>
 </configuration>
