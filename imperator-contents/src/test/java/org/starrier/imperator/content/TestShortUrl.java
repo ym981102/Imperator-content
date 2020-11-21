@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 public class TestShortUrl {
 
     public static void main(String[] args) {
-        String sLongUrl = "https://zhangvalue.blog.csdn.net/"; // 长链接
+        String sLongUrl = "https://starrier.blog.csdn.net/"; // 长链接
         String[] aResult = shortUrl(sLongUrl);
         // 打印出结果
         for (int i = 0; i < aResult.length; i++) {
@@ -28,7 +28,7 @@ public class TestShortUrl {
                 "W", "X", "Y", "Z"
         };
         // 可以自定义生成 MD5 加密字符传前的混合加密key
-        String key = "mimvp.com";
+        String key = "starrier.org";
         // 对传入网址进行 MD5 加密，key是加密字符串
         String hex = CMyEncrypt.md5(key + url);
 
@@ -118,7 +118,7 @@ class CMyEncrypt {
     }
 
     public static void main(String[] args) {
-        String s = CMyEncrypt.md5("https://zhangvalue.blog.csdn.net/");
+        String s = CMyEncrypt.md5("https://starrier.blog.csdn.net/");
         System.out.println(s);
     }
 
