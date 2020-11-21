@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SeataHandler implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(@NotNull HttpServletRequest request,@NotNull HttpServletResponse response, @NotNull Object object) throws Exception {
+    public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object object) throws Exception {
 
         TransmittableThreadLocal<String> parent = new TransmittableThreadLocal<>();
 

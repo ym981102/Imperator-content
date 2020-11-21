@@ -22,7 +22,7 @@ public class ArticleTest {
 
 
     @Test
-    public void testArticleCache(){
+    public void testArticleCache() {
         articleService.test();
     }
 }

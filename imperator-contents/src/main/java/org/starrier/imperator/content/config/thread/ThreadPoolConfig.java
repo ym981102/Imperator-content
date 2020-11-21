@@ -8,7 +8,6 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import javax.validation.Valid;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -39,7 +38,6 @@ public class ThreadPoolConfig {
      * 线程池最大线程数 = CPU核心数 * 2 + 1
      */
     private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
-
 
 
     /**

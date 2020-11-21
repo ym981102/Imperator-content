@@ -171,10 +171,10 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public String test() {
 
-        ValueOperations<String,Integer> valueOperations = redisTemplate.opsForValue();
+        ValueOperations<String, Integer> valueOperations = redisTemplate.opsForValue();
         Integer test = valueOperations.get("test");
         if (test == null) {
-            valueOperations.set("test",1);
+            valueOperations.set("test", 1);
             return "failed";
         }
         return "success";

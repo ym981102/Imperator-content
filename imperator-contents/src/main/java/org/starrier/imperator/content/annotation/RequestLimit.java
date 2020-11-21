@@ -10,6 +10,7 @@ import java.lang.annotation.Target;
 /**
  * 请求限制的自定义注解
  *
+ * @author Starrier
  * @Target 注解可修饰的对象范围，ElementType.METHOD 作用于方法，ElementType.TYPE 作用于类
  * (ElementType)取值有：
  * 　　　　1.CONSTRUCTOR:用于描述构造器
@@ -28,8 +29,6 @@ import java.lang.annotation.Target;
  * 　　　　3.RUNTIME:在运行时有效（即运行时保留）
  * @Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。
  * 如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。
- *
- * @author Starrier
  * @date 2020/11/21
  */
 @Documented

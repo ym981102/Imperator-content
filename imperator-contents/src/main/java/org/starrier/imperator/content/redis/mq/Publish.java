@@ -13,9 +13,9 @@ public class Publish {
     private RedissonClient redissonClient;
 
     //发布
-    public long publish(MyObjectDTO myObjectDTO){
+    public long publish(MyObjectDTO myObjectDTO) {
         RTopic rTopic = redissonClient.getTopic(TopicName);
-        return  rTopic.publish(myObjectDTO);
+        return rTopic.publish(myObjectDTO);
     }
 
 }

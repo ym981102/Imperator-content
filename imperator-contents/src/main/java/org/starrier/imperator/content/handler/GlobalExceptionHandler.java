@@ -11,29 +11,30 @@ import java.io.IOException;
 
 /**
  * 全局异常捕获
+ *
  * @author rstyro
  * @since 2019-03-12
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-	private final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-	@ExceptionHandler(NullPointerException.class)
-	public Result NullPointer(NullPointerException ex){
-	   logger.error(ex.getMessage(),ex);
-	   return Result.error(ResultCode.ERROR);
+    @ExceptionHandler(NullPointerException.class)
+    public Result NullPointer(NullPointerException ex) {
+        logger.error(ex.getMessage(), ex);
+        return Result.error(ResultCode.ERROR);
     }
 
     @ExceptionHandler(ClassCastException.class)
-    public Result ClassCastException(ClassCastException ex){
-        logger.error(ex.getMessage(),ex);
+    public Result ClassCastException(ClassCastException ex) {
+        logger.error(ex.getMessage(), ex);
         return Result.error(ResultCode.ERROR);
     }
 
     @ExceptionHandler(IOException.class)
-    public Result IOException(IOException ex){
-        logger.error(ex.getMessage(),ex);
+    public Result IOException(IOException ex) {
+        logger.error(ex.getMessage(), ex);
         return Result.error(ResultCode.ERROR);
     }
 
@@ -52,14 +53,14 @@ public class GlobalExceptionHandler {
 */
 
     @ExceptionHandler(RuntimeException.class)
-    public Result RuntimeException(RuntimeException ex){
-        logger.error(ex.getMessage(),ex);
+    public Result RuntimeException(RuntimeException ex) {
+        logger.error(ex.getMessage(), ex);
         return Result.error(ResultCode.ERROR);
     }
 
     @ExceptionHandler(Exception.class)
-    public Result exception(Exception ex){
-        logger.error(ex.getMessage(),ex);
+    public Result exception(Exception ex) {
+        logger.error(ex.getMessage(), ex);
         return Result.error(ResultCode.ERROR);
     }
 

@@ -236,7 +236,7 @@ public class ArticleController {
         return ResponseEntity.status(HttpStatus.OK).body(articles);
     }
 
-    @RequestLimit(maxCount = 1,second = 10)
+    @RequestLimit(maxCount = 1, second = 10)
     @GetMapping("/test")
     public String test() {
         return articleService.test();

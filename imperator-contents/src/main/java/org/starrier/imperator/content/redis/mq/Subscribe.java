@@ -19,14 +19,14 @@ public class Subscribe {
     private RedissonClient redissonClient;
 
     @PostConstruct
-    public void subscribe(){
+    public void subscribe() {
         RTopic rTopic = redissonClient.getTopic(TopicName);
         rTopic.addListener(MyObjectDTO.class, new MessageListener<MyObjectDTO>() {
             // 接受订阅的消息
             @Override
             public void onMessage(CharSequence charSequence, MyObjectDTO myObjectDTO) {
-                log.info("接受到消息主题={}，内容={}",charSequence,myObjectDTO);
-                System.out.println("传输的数据为="+myObjectDTO);
+                log.info("接受到消息主题={}，内容={}", charSequence, myObjectDTO);
+                System.out.println("传输的数据为=" + myObjectDTO);
             }
         });
     }

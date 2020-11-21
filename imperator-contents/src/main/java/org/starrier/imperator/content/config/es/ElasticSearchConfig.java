@@ -28,6 +28,7 @@ public class ElasticSearchConfig {
 
     /**
      * 获取es主机和端口
+     *
      * @return
      */
     private HttpHost getHttpHost() {

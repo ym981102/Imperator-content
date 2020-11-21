@@ -16,8 +16,10 @@
 
     <insert id="insertArticle" parameterType="Article" useGeneratedKeys="true" keyProperty="id"><![CDATA[
 
-                insert into article (title, content, author, category, summary)
-                values (#{title}, #{content}, #{author}, #{category}, #{summary})
+
+                        insert into article (title, content, author, category, summary)
+                        values (#{title}, #{content}, #{author}, #{category}, #{summary})
+
 
         ]]></insert>
 
