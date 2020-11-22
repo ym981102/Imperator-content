@@ -43,6 +43,7 @@ public class ShortUrlService {
      * @return 十进制的数字
      */
     public static long toDecimalNumber(String number, int seed) {
+
         char[] charBuf = number.toCharArray();
         if (seed == 10) {
             return Long.parseLong(number);

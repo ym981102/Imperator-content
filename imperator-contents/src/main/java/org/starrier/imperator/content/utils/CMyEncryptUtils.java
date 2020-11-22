@@ -1,6 +1,10 @@
 package org.starrier.imperator.content.utils;
 
 import java.security.MessageDigest;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static org.starrier.imperator.content.constant.Constant.HEX_DIGITS;
 
 /**
  * @author starrier
@@ -8,28 +12,27 @@ import java.security.MessageDigest;
  */
 public class CMyEncryptUtils {
 
-    // 十六进制下数字到字符的映射数组
-    private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
-    /** 把inputString加密 */
+    /**
+     * 把inputString加密
+     */
     public static String md5(String inputStr) {
         return encodeByMD5(inputStr);
     }
+
     /**
      * 验证输入的密码是否正确
      *
-     * @param password 真正的密码（加密后的真密码）
+     * @param password    真正的密码（加密后的真密码）
      * @param inputString 输入的字符串
      * @return 验证结果，boolean类型
      */
     public static boolean authenticatePassword(String password, String inputString) {
-        if (password.equals(encodeByMD5(inputString))) {
-            return true;
-        } else {
-            return false;
-        }
+        return password.equals(encodeByMD5(inputString));
     }
 
-    /** 对字符串进行MD5编码 */
+    /**
+     * 对字符串进行MD5编码
+     */
     private static String encodeByMD5(String originString) {
         if (originString != null) {
             try {
@@ -38,8 +41,7 @@ public class CMyEncryptUtils {
                 // 使用指定的字节数组对摘要进行最后更新，然后完成摘要计算
                 byte[] results = md5.digest(originString.getBytes());
                 // 将得到的字节数组变成字符串返回
-                String result = byteArrayToHexString(results);
-                return result;
+                return byteArrayToHexString(results);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -54,11 +56,7 @@ public class CMyEncryptUtils {
      * @return 十六进制字符串
      */
     private static String byteArrayToHexString(byte[] b) {
-        StringBuffer resultSb = new StringBuffer();
-        for (int i = 0; i < b.length; i++) {
-            resultSb.append(byteToHexString(b[i]));
-        }
-        return resultSb.toString();
+        return IntStream.range(0, b.length).mapToObj(i -> byteToHexString(b[i])).collect(Collectors.joining());
     }
 
     // 将一个字节转化成十六进制形式的字符串
@@ -69,7 +67,7 @@ public class CMyEncryptUtils {
         }
         int d1 = n / 16;
         int d2 = n % 16;
-        return hexDigits[d1] + hexDigits[d2];
+        return HEX_DIGITS[d1] + HEX_DIGITS[d2];
     }
 
 }
