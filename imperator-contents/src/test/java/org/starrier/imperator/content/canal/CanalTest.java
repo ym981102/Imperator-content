@@ -21,48 +21,8 @@ import java.util.List;
  * @author starrier
  * @date 2020/11/19
  */
-
 public class CanalTest {
 
-
-    @Test
-    public void testCanalConnect() {
-        // 创建链接
-        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1",
-                11111), "example", "canal", "canal");
-        int batchSize = 1000;
-        int emptyCount = 0;
-        try {
-            connector.connect();
-            connector.subscribe(".*\\..*");
-            connector.rollback();
-            int totalEmptyCount = 120;
-            while (emptyCount < totalEmptyCount) {
-                Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据
-                long batchId = message.getId();
-                int size = message.getEntries().size();
-                if (batchId == -1 || size == 0) {
-                    emptyCount++;
-                    System.out.println("empty count : " + emptyCount);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                    }
-                } else {
-                    emptyCount = 0;
-                    // System.out.printf("message[batchId=%s,size=%s] \n", batchId, size);
-                    printEntry(message.getEntries());
-                }
-
-                connector.ack(batchId); // 提交确认
-                // connector.rollback(batchId); // 处理失败, 回滚数据
-            }
-
-            System.out.println("empty too many times, exit");
-        } finally {
-            connector.disconnect();
-        }
-    }
 
     private static void printEntry(List<Entry> entrys) {
         for (Entry entry : entrys) {
@@ -102,6 +62,45 @@ public class CanalTest {
     private static void printColumn(List<Column> columns) {
         for (Column column : columns) {
             System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
+        }
+    }
+
+    //@Test
+    public void testCanalConnect() {
+        // 创建链接
+        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1",
+                11111), "example", "canal", "canal");
+        int batchSize = 1000;
+        int emptyCount = 0;
+        try {
+            connector.connect();
+            connector.subscribe(".*\\..*");
+            connector.rollback();
+            int totalEmptyCount = 120;
+            while (emptyCount < totalEmptyCount) {
+                Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据
+                long batchId = message.getId();
+                int size = message.getEntries().size();
+                if (batchId == -1 || size == 0) {
+                    emptyCount++;
+                    System.out.println("empty count : " + emptyCount);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                    }
+                } else {
+                    emptyCount = 0;
+                    // System.out.printf("message[batchId=%s,size=%s] \n", batchId, size);
+                    printEntry(message.getEntries());
+                }
+
+                connector.ack(batchId); // 提交确认
+                // connector.rollback(batchId); // 处理失败, 回滚数据
+            }
+
+            System.out.println("empty too many times, exit");
+        } finally {
+            connector.disconnect();
         }
     }
 
