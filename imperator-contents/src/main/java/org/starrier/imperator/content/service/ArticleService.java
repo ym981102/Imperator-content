@@ -18,7 +18,7 @@ public interface ArticleService {
      *
      * @param article
      */
-    void insertArticle(Article article);
+    Boolean insertArticle(Article article);
 
     /**
      * Delete Article via id

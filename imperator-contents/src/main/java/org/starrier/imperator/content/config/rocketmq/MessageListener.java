@@ -24,9 +24,9 @@ public class MessageListener implements MessageListenerConcurrently {
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-        for (MessageExt msg : msgs){
+        for (MessageExt msg : msgs) {
             boolean result = messageProcessor.handleMessage(msg);
-            if (!result){
+            if (!result) {
                 return ConsumeConcurrentlyStatus.RECONSUME_LATER;
             }
         }

@@ -20,9 +20,10 @@ public interface ArticleMapper extends ArticleDao {
      * Insert Article with Id.
      *
      * @param article Article
+     * @return
      */
     @Override
-    void insertArticle(@Param("article") Article article);
+    int insertArticle(@Param("article") Article article);
 
     /**
      * Delete Article By id.

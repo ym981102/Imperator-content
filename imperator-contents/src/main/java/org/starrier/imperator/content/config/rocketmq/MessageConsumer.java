@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
  *
  * @author starrier
  * @date 2020/11/22
+ * <p>
+ * rocketmq会自动捕获异常回滚  (官方默认会重复消费16次)，
  *//*
 
 @Component
@@ -24,8 +26,8 @@ public class MessageConsumer implements RocketMQListener<String> {
 
     */
 /**
-     * rocketmq会自动捕获异常回滚  (官方默认会重复消费16次)，
-     *//*
+ * rocketmq会自动捕获异常回滚  (官方默认会重复消费16次)，
+ *//*
 
     @Override
     public void onMessage(String message) {

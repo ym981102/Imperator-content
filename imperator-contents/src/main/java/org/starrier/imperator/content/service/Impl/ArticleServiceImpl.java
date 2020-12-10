@@ -55,10 +55,10 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void insertArticle(Article article) {
+    public Boolean insertArticle(Article article) {
 
         log.info(" ThreadContextService, Current thread:[{}]", Thread.currentThread().getId());
-        articleDao.insertArticle(article);
+        return articleDao.insertArticle(article) > 0;
     }
 
     @Override
@@ -191,6 +191,13 @@ public class ArticleServiceImpl implements ArticleService {
     public Optional<List<Article>> getArticleById(final List<Long> articleParam) {
         log.info("The current thread :[{}]", Thread.currentThread().getName());
         log.info("The request param:[{}]", articleParam);
+        // 1. 查询出当前的文章内容
+
+        // 2. 查询出的文章访问量 + 1
+
+        // 3. 查询出当前文章的评论内容，按时间维度排序
+
+
         List<Article> articleList = Lists.newArrayListWithExpectedSize(articleParam.size());
         articleParam.parallelStream().forEach(articleId -> articleList.add(articleDao.getArticleById(articleId)));
         log.info("Result :[{}]", articleList);

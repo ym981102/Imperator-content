@@ -9,7 +9,7 @@ import static org.starrier.imperator.content.constant.Constant.DIGITS_BASE_64;
 public class ShortUrlService {
 
 
-    public String getShortUrlByNumberDigits(){
+    public String getShortUrlByNumberDigits() {
 
         return null;
     }

@@ -19,8 +19,9 @@ public interface ArticleDao {
      * Insert Article with Id.
      *
      * @param article Article
+     * @return
      */
-    void insertArticle(Article article);
+    int insertArticle(Article article);
 
     /**
      * Delete Article By id.
