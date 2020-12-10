@@ -28,7 +28,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        log.info("add custome intercept");
+        log.info("add customer intercept");
         registry.addInterceptor(requestLimitIntercept);
         registry.addInterceptor(userContextInterceptor);
     }

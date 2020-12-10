@@ -65,7 +65,6 @@ public class RequestLimitIntercept extends HandlerInterceptorAdapter {
     public boolean isLimit(HttpServletRequest request, RequestLimit requestLimit) {
 
         // 受限的redis 缓存key ,因为这里用浏览器做测试，我就用sessionid 来做唯一key,如果是app ,可以使用 用户ID 之类的唯一标识。
-
         String token = request.getHeader(tokenValidateParam);
         if (StringUtils.isEmpty(token)) {
             return false;
@@ -117,9 +116,8 @@ public class RequestLimitIntercept extends HandlerInterceptorAdapter {
     private void responseOut(HttpServletResponse response, Result result) throws IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
-        String json = JSONObject.toJSON(result).toString();
-        out = response.getWriter();
-        out.append(json);
+       try(PrintWriter out =  response.getWriter()){
+           out.append(JSONObject.toJSONString(result));
+       }
     }
 }

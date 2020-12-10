@@ -32,7 +32,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.starrier.dreamwar.controller"))
+                .apis(RequestHandlerSelectors.basePackage("org.starrier.imperator.content.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
